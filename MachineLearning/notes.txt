@@ -1,0 +1,418 @@
+
+
+# parts of speech 
+# parts of speech  is a process of assigning a grammatical level like noun , adjective , verb , to each word in a sentence 
+# purpose - it helps a computer to understand the syntactic role of each word in a sentence that means how words relate to each 
+#           other in structure and meaning .
+# examples -      the               cat         sat             on                  the         mat 
+# posttags -    determiner(dt)     noun(nn)      verb(vbd)      preposition(in)       dt            nn
+             
+# applications - 
+# 1. information extraction 
+# 2. name entity recognition
+# 3. sentiment analysis 
+# 4. machine translation
+
+ topic =======================================================
+    # bag of words - it is a text representation technique that converts the text into a set of words , ignoring grammer and word 
+                 order but keeping the word frequency.
+
+    # how it works - 1. collect all the unique words form the text.
+                 2. count how many times each word appears in each document.
+                 3. represent each document as a vector of word counts.
+    example = the cat sat on the mat . 
+              the dog sat on log .
+
+                                     // frequency 
+              word                 sentence1                        sentence2 
+             { the }                    2                               1
+             { sat }                    1                               1
+             { ....}
+
+   # applications - text classification  , spam email detection , document similarity .
+   # in short bos tagging means               whereas bow means representing the frequency of words for machine learning .
+
+topic =========================================================
+  # NER - it focuses on identifying and categorising important information known as entities in text . these entities can be names of 
+          people , places , organisations , dates etc.
+
+  # understanding NER - it helps in detecting specific information and sort it into predefined categories , it plays an important role 
+                        in enhancing nlp task like pos tagging and parsing .
+  # working of NER - 
+  1. analysing the text - it processes the inter text to locate words or phrases that could represent the entities .
+  2. finding sentence boundaries - it identifies starting and ending of sentences using punctuation and capitalisation which helps in maintaining 
+                                   the meaning and context of entites .
+  3. tokenising and eos tagging  - the text is broken into set of tokens and each token is tagged with its grammatical role which provides
+                                   important clues for identifying entites .
+  4. entity detection and classification - tokens or group of tokens that match the patterns of known entities are recognised and classified
+                                            into predefined categories like parson , location , organisation etc . 
+  5. model traning and refinement - ml models are trained using labelled datasets and they imporve over time by learning the patterns etc .
+  6. adapting to new context  , 7. numerical vectors , 8.
+
+
+# text preprocessing -
+ vectorisation using one-hot encoding -  
+ why do we need first ? computers do not understand the text . it understands the numbers ,so before appplying ml or nlp models
+                        we must convert any input text into numerical vectors . for ex ,  i love nlp = 
+
+Definition:
+One-Hot Encoding is the simplest text vectorization technique.
+Each word in the vocabulary is represented by a unique binary vector.
+Value 1 → word is present
+Value 0 → word is absent
+Vector length = size of vocabulary
+
+PIPELINE
+
+Step 1: Text (Raw Sentences)
+
+I love NLP
+
+I love ML
+
+NLP is fun
+
+Step 2: Cleaning (convert to lowercase)
+
+i love nlp
+
+i love ml
+
+nlp is fun
+
+Step 3: Tokenization
+
+1 → ['i', 'love', 'nlp']
+2 → ['i', 'love', 'ml']
+3 → ['nlp', 'is', 'fun']
+
+Step 4: Vocabulary Creation (unique words)
+
+Vocabulary = [i, love, nlp, ml, is, fun]
+
+Vocabulary size = 6
+
+Step 5: Index Mapping
+
+i → 0
+love → 1
+nlp → 2
+ml → 3
+is → 4
+fun → 5
+
+Step 6: One-Hot Word Vectors
+
+Vector format: [i, love, nlp, ml, is, fun]
+
+i → [1, 0, 0, 0, 0, 0]
+love → [0, 1, 0, 0, 0, 0]
+nlp → [0, 0, 1, 0, 0, 0]
+ml → [0, 0, 0, 1, 0, 0]
+is → [0, 0, 0, 0, 1, 0]
+fun → [0, 0, 0, 0, 0, 1]
+
+Sentence-Level Representation (Bag of Words)  -  (matrix form present in a sentence)
+
+Sentence 1: i love nlp
+→ [1, 1, 1, 0, 0, 0]
+
+Sentence 2: i love ml
+→ [1, 1, 0, 1, 0, 0]
+
+Sentence 3: nlp is fun
+→ [0, 0, 1, 0, 1, 1]
+
+
+Advantages:
+
+Simple
+
+Easy to implement
+
+
+Disadvantages:
+
+High dimensional (sparse vectors)
+
+Does not capture semantic meaning
+
+No relationship between words
+
+when to usee ???????????????? classification model , simple classification , small vocabulary
+avoid ???????????????????????? large purpose 
+
+
+1️ . Bag of Words (BoW)
+######## Definition
+
+Bag of Words is a technique where:
+
+We ignore grammar and word order
+
+We only count how many times each word appears
+
+It creates a vocabulary of all unique words in the dataset.
+Example
+
+Sentence 1:
+
+"I love AI"
+
+Sentence 2:
+
+"I love coding"
+
+Step 1: Create Vocabulary
+
+[I, love, AI, coding]
+
+Step 2: Convert to Vectors
+Sentence	I	love	AI	coding
+I love AI	1	1	1	0
+I love coding	1	1	0	1
+
+Each sentence becomes a numeric vector.
+
+@@@@@ Advantages
+
+Simple to implement
+
+Works well for small tasks
+
+Easy to understand
+
+@@@@@ Disadvantages
+
+Ignores word order
+
+No semantic meaning
+
+Large vocabulary → large vectors (sparse matrix problem)
+
+2️....N-gram
+Definition
+
+An N-gram is a sequence of N consecutive words.
+
+1 word → Unigram
+
+2 words → Bigram
+
+3 words → Trigram
+
+Example
+
+Sentence:
+
+"I love machine learning"
+
+Unigrams (N=1)
+
+I, love, machine, learning
+
+Bigrams (N=2)
+
+I love, love machine, machine learning
+
+Trigrams (N=3)
+
+I love machine, love machine learning
+
+
+
+############################################################################################
+1️⃣ Term Frequency (TF)
+👉 Definition:
+
+Term Frequency measures how frequently a word appears in a single document.
+
+👉 Formula:
+
+TF(t,d)=
+Total number of words in document d / Number of times term t appears in document d
+	​
+
+👉 Example:
+tf - idf = 'ai is the future of ai';
+
+2️⃣ Inverse Document Frequency (IDF)
+
+👉 Problem with TF:
+Some words appear frequently in almost every document (like "is", "the", "and").
+These words are not useful for distinguishing documents.
+That’s where IDF comes in.
+
+👉 Definition:
+Inverse Document Frequency measures how important a word is across all documents.
+If a word appears in many documents → less important
+If it appears in very few documents → more important
+
+
+
+👉 Formula:
+IDF(t)=log⁡(Ndf(t))IDF(t) = \log \left( \frac{N}{df(t)} \right)IDF(t)=log(df(t)N​)
+Where:
+
+
+N = Total number of documents
+
+
+df(t) = Number of documents containing term t
+
+
+
+👉 Example:
+"ai is the future"
+"ai and ml are related"
+"deep seek is powerful"
+Suppose:
+
+
+Total documents (N) = 1000
+
+
+Word "AI" appears in 10 documents
+
+
+IDF(AI)=log⁡(1000/10)=log⁡(100)=2IDF(AI) = \log(1000/10) = \log(100) = 2IDF(AI)=log(1000/10)=log(100)=2
+If a word appears in 900 documents:
+IDF=log⁡(1000/900)IDF = \log(1000/900)IDF=log(1000/900)
+Very small value → less important
+
+3️⃣ TF-IDF (Combined)
+                       TF−IDF=TF×IDF
+So a word is important if:
+
+It appears many times in the document (high TF)
+
+It appears in few documents overall (high IDF)
+
+
+🔥 Intuition in One Line
+ConceptMeaningTFImportant in this documentIDFRare across all documents
+low TF-IDFImportant in this document AND rare overall
+
+
+
+
+DOCUMENTS:
+
+D1 = "i love machine learning"
+D2 = "machine learning is fun"
+D3 = "i love fun"
+
+Total number of documents (N) = 3
+
+STEP 1: Build Vocabulary
+
+Unique words across all documents:
+
+i
+love
+machine
+learning
+is
+fun
+
+STEP 2: Term Frequency (TF)
+
+Formula:
+
+TF(term, document) = (Number of times term appears in document) / (Total words in document)
+
+D1 = "i love machine learning"
+Total words = 4
+
+i = 1/4 = 0.25
+love = 1/4 = 0.25
+machine = 1/4 = 0.25
+learning = 1/4 = 0.25
+is = 0
+fun = 0
+
+D2 = "machine learning is fun"
+Total words = 4
+
+machine = 1/4 = 0.25
+learning = 1/4 = 0.25
+is = 1/4 = 0.25
+fun = 1/4 = 0.25
+i = 0
+love = 0
+
+D3 = "i love fun"
+Total words = 3
+
+i = 1/3 = 0.33
+love = 1/3 = 0.33
+fun = 1/3 = 0.33
+machine = 0
+learning = 0
+is = 0
+
+STEP 3: Document Frequency (DF)
+
+DF = Number of documents containing the word
+
+i → appears in D1, D3 → DF = 2
+love → appears in D1, D3 → DF = 2
+machine → appears in D1, D2 → DF = 2
+learning → appears in D1, D2 → DF = 2
+is → appears in D2 → DF = 1
+fun → appears in D2, D3 → DF = 2
+
+STEP 4: Inverse Document Frequency (IDF)
+
+Formula:
+
+IDF(term) = log(N / DF)
+
+N = 3
+
+We will use log base 10.
+
+i → log(3/2) = log(1.5) = 0.176
+love → log(3/2) = 0.176
+machine → log(3/2) = 0.176
+learning → log(3/2) = 0.176
+is → log(3/1) = log(3) = 0.477
+fun → log(3/2) = 0.176
+
+STEP 5: Final TF-IDF Values
+
+TF-IDF = TF × IDF
+
+D1:
+
+i → 0.25 × 0.176 = 0.044
+love → 0.25 × 0.176 = 0.044
+machine → 0.25 × 0.176 = 0.044
+learning → 0.25 × 0.176 = 0.044
+
+D2:
+
+machine → 0.25 × 0.176 = 0.044
+learning → 0.25 × 0.176 = 0.044
+is → 0.25 × 0.477 = 0.119
+fun → 0.25 × 0.176 = 0.044k
+
+D3:
+
+i → 0.33 × 0.176 = 0.058
+love → 0.33 × 0.176 = 0.058
+fun → 0.33 × 0.176 = 0.058
+
+
+//// applications 
+
+Search engines
+
+Document ranking
+
+Keyword extraction
+
+Text classification
+
+Information retrieval systems
+
