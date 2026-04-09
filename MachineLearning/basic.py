@@ -1,4 +1,4 @@
-import nltk
+# import nltk
 # nltk.download( 'brown')
 # from nltk.corpus import brown
 # print(brown.categories())
@@ -126,9 +126,7 @@ import nltk
 
 # import string
 # from nltk.tokenize import word_tokenize
-
-
-# s = [" i love nlp" , "i love machine learning" , "nlp in fun"]
+#  s = [" i love nlp" , "i love machine learning" , "nlp in fun"]
 # corpus = " ".join(s)
 # corpus = corpus.upper()
 # token = word_tokenize(corpus.lower())
@@ -216,9 +214,109 @@ import nltk
 
 
 
+# import numpy as np
+# x = np.array([2,5,3,6,2,1,9])
+# sigmoid = 1 / ( 1 + np.exp(-x))
+# tanh1 = np.max( 0 , x )
+# print( tanh1) 
+# print( sigmoid )  
+
+# import numpy as np
+# X = np.array([2,3])
+# W = np.array([0.5,0.8])
+# b = 0.2
+# y = np.dot(X, W) + b
+# z = max(0,y)   #Relu
+# print(z)
+
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense
+
+# model = Sequential()
+
+# # Hidden Layer
+# model.add(Dense(4, input_dim = 2, activation = 'relu'))
+
+# # Output Layer
+# model.add(Dense(1, activation = 'sigmoid'))
+
+
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense
+# import numpy as np
+
+# model = Sequential()
+
+# X = np.array([[0,0],[0,1],[1,0],[1,1]])
+# Y = np.array([0,1,1,0])
+
+# # Hidden Layer
+# model.add(Dense(4, input_dim = 2, activation = 'relu'))
+
+# # Output Layer
+# model.add(Dense(1, activation = 'sigmoid'))
+
+# # Compile model
+# model.compile(loss = 'binary_crossentropy', optimizer = 'adam')
+
+# # Fit the model
+# model.fit(X, Y, epochs=10)
+
+# print(model.predict(X))
+
+
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense
+# import numpy as np 
+
+# model = Sequential()
+
+# X = np.array([[2,3],[3,6],[5,6],[6,7],[8,5],[1,4]])
+# Y = np.array([0,0,0,1,1,0])
+
+# # Hidden Layer
+# model.add(Dense(6, input_dim=2, activation='relu'))
+
+# # Output Layer 
+# model.add(Dense(1, activation='sigmoid'))
+
+# # Compile model
+# model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+# model.fit(X, Y, epochs=10)
+
+
+# print(model.predict(X))
+
+# test = np.array([[1,2]])
+# pred = model.predict(test)
+
+# print(model.predict(test))
+
+
 import numpy as np
-x = np.array([2,5,3,6,2,1,9])
-sigmoid = 1 / ( 1 + np.exp(-x))
-tanh1 = np.max( 0 , x )
-print( tanh1) 
-print( sigmoid )  
+import tensorflow as tf
+from tensorflow.keras.preprocessing.text import Tokenizer
+
+s = ["I", "love", "AI"]
+
+for word in s:
+    print(word)
+    
+x = [1,2,3]
+h=0
+for i in x:
+    h = h + i
+    print(h)
+print()
+
+t = Tokenizer()
+s2 = ["I love AI", "AI is amazing love AI"]
+t.fit_on_texts(s2)
+print(t.texts_to_sequences(s2))
+# print(t)
+
+
+
+
+

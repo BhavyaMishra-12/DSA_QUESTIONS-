@@ -195,7 +195,7 @@ using namespace std;
 // 11.check if array is sorted
 // bool ifsorted( vector<int>v , int i )
 // {    
-//      if (v.size() <= 1)   // empty or single element
+//      if(v.size() <= 1)   // empty or single element
 //              return true;
 //      if( i == v.size() - 1) return true ;
 //      if( v[i] <= v[i + 1])
@@ -206,7 +206,7 @@ using namespace std;
 // }
 // int main()
 // {
-//     vector<int>v = { 1,2,3,4,5};
+//     vector<int>v = {1,2,3,4,5};
 //     if( ifsorted( v , 0) )
 //     {
 //         cout<< "Array is sorted";

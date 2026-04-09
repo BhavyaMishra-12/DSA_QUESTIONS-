@@ -1,7 +1,7 @@
   // 24-11-2025   
  //  string stream function usage 
 
-// #include<bits/stdc++.h>
+
 // using namespace std;
 // int main()
 // {
@@ -32,16 +32,15 @@
 //     return 0;
 // }
 
-
-
 #include<bits/stdc++.h>
 using namespace std;
-void reverse(string &s , int i)
-{ 
-    
-   
-}
-int main()
-{
-=      
+
+int main(){
+      double s = 0 ;
+      for( int i = 0 ; i < 10000 ; i++)
+         {
+           s += 0.0001;
+         }
+        cout << s ;
+        return 0;
 }
